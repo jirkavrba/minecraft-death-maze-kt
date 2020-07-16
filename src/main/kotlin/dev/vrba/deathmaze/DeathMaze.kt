@@ -1,5 +1,6 @@
 package dev.vrba.deathmaze
 
+import dev.vrba.deathmaze.generator.DeathMazeWorldGenerator
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
@@ -20,6 +21,8 @@ class DeathMaze : JavaPlugin()
 
     private fun startNewDeathMazeSession()
     {
-        println("Starting")
+        val world = DeathMazeWorldGenerator.generateWorld()
+
+        this.server.onlinePlayers.forEach { it.teleport(world.spawnLocation) }
     }
 }
