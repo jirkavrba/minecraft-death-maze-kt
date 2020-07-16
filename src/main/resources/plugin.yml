@@ -1,0 +1,11 @@
+name: DeathMaze
+version: ${project.version}
+main: dev.vrba.deathmaze.DeathMaze
+api-version: 1.16
+authors: [0x4a69726b61]
+description: Death maze minigame in Minecraft implemented as a Spigot plugin
+website: https://www.github.com/jirkavrba/minecraft-death-maze
+commands:
+  death-maze:
+    description: Starts a new death maze minigame session
+    usage: /death-maze (parameters will be added in the future)
