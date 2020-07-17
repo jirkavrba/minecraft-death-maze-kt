@@ -10,7 +10,7 @@ class DeathMaze : JavaPlugin()
 {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean
     {
-        if (command.name == "death-maze" && sender is Player)
+        if (command.name == "death-maze")
         {
             this.startNewDeathMazeSession()
             return true
@@ -21,8 +21,10 @@ class DeathMaze : JavaPlugin()
 
     private fun startNewDeathMazeSession()
     {
-        val world = DeathMazeWorldGenerator.generateWorld()
+        val players = this.server.onlinePlayers
 
-        this.server.onlinePlayers.forEach { it.teleport(world.spawnLocation) }
+        val world = DeathMazeWorldGenerator.generateWorld(players.size)
+
+        players.forEach { it.teleport(world.spawnLocation) }
     }
 }

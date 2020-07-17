@@ -8,14 +8,29 @@ import java.util.*
 
 object DeathMazeWorldGenerator
 {
-    fun generateWorld(): World
+    fun generateWorld(players: Int): World
     {
+        val maze = MazeGenerator.generateMaze(10 + (2 * players))
         val world = this.generateEmptyWorld() ?: throw Exception("Cannot generate an empty world.")
 
-        // Disable mob spawning
-        world.setSpawnFlags(false, false)
+        this.buildMaze(world, maze)
 
         return world
+    }
+
+    private fun buildMaze(world: World, maze: MazeGenerator.Maze)
+    {
+        for (node in maze.nodes)
+        {
+            for (neighborNode in maze.neighbours(node))
+            {
+                // Trump says that we gotta build a wall between those two nodes
+                if (!maze.hasDoorBetween(node, neighborNode))
+                {
+                    // TODO: Build a wall
+                }
+            }
+        }
     }
 
     private fun generateEmptyWorld(): World?
