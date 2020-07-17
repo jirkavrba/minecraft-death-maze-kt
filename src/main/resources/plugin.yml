@@ -7,5 +7,6 @@ description: Death maze minigame in Minecraft implemented as a Spigot plugin
 website: https://www.github.com/jirkavrba/minecraft-death-maze
 commands:
   death-maze:
+    aliases: dm
     description: Starts a new death maze minigame session
     usage: /death-maze (parameters will be added in the future)

@@ -43,15 +43,18 @@ object MazeGenerator
             // Recurse with each neighbour
             // This should be probably optimized as tail recursive call, but as the recursion depth is max size ^ 2 in
             // the worst case scenario, I think it's not that relevant anyway
-            extended = resolveNode(
-                    it,
-                    Maze(
-                            extended.width,
-                            extended.height,
-                            extended.nodes + node,
-                            extended.doors + MazeNodeDoor(node, it)
-                    )
-            )
+            if (!extended.nodes.contains(it))
+            {
+                extended = resolveNode(
+                        it,
+                        Maze(
+                                extended.width,
+                                extended.height,
+                                extended.nodes + node,
+                                extended.doors + MazeNodeDoor(node, it)
+                        )
+                )
+            }
         }
 
         return extended
